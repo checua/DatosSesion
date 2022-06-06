@@ -2,6 +2,9 @@ package com.example.datossesion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -41,6 +44,45 @@ public class MainActivity extends AppCompatActivity {
         lblName.setText(Html.fromHtml("Nombre: <b>" + name + "</b>"));
         lblEmail.setText(Html.fromHtml("Email: <b>" + email + "</b>"));
 
-        btnLogout.setOnClickListener((arg0)  -> {session.logOut();});
+        btnLogout.setOnClickListener((arg0)  -> {
+            session.logOut();
+            //finish ();
+        });
     }
+/*
+    @Override
+    protected void onStart() {
+        super.onStart ( );
+
+        SharedPreferences sharedpreferences = getSharedPreferences ( "MisPreferencias", Context.MODE_PRIVATE );
+        //get your string with default string in case referred key is not found
+        String str1 = sharedpreferences.getString ( "user1", null );
+        String str2 = sharedpreferences.getString ( "user2", null );
+
+        if (str1 != null && str2 != null) {
+            etUsuario.setVisibility ( View.INVISIBLE );
+            etContra.setVisibility ( View.INVISIBLE );
+            btnLogin.setVisibility ( View.INVISIBLE );
+            tvRegistrar.setVisibility ( View.INVISIBLE );
+            imagen1.setVisibility ( View.INVISIBLE );
+            progressBar.setVisibility ( View.VISIBLE );
+
+            Intent intentReg = new Intent ( MainActivity.this, Main2Activity.class );
+            MainActivity.this.startActivity ( intentReg );
+        } else {
+            progressBar.setVisibility ( View.INVISIBLE );
+
+
+            //Toast.makeText(getApplicationContext(),"Now onStart() calls", Toast.LENGTH_LONG).show(); //onStart Called
+            tvRegistrar.setOnClickListener ( new View.OnClickListener ( ) {
+                @Override
+                public void onClick(View view) {
+                    Intent intentReg = new Intent ( MainActivity.this, Register.class );
+                    MainActivity.this.startActivity ( intentReg );
+                }
+            } );
+        }
+    }
+
+ */
 }

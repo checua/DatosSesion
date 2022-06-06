@@ -22,11 +22,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         session = new SessionManager(getApplicationContext());
+/*
+        if(!session.loginStatus()){
+
+        }
+
+ */
+        session.loginStatus();
 
         txtUser = (EditText) findViewById(R.id.txtUserName);
         txtPwd =  (EditText) findViewById(R.id.txtPassword);
 
-        Toast.makeText(getApplicationContext(), "Estado de identificación" + session.isLogged(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Estado de identificación: " + session.isLogged(), Toast.LENGTH_LONG).show();
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = txtUser.getText().toString();
                 String password = txtPwd.getText().toString();
+
                 if(username.trim().length() > 0 && password.trim().length() > 0){
                     if(username.equals("David") && password.equals("pixelpro")){
                         session.createLoginSession("Pixelpro", "info@pixelpro.es");

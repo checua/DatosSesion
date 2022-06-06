@@ -14,13 +14,12 @@ public class DialogManager {
 
         if(status != null)
             alertDialog.setIcon((status) ? R.drawable.icon : R.drawable.error);
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        alertDialog.setButton("OK", (dialog, which) -> {
 
-            }
-        });
+        } );
         alertDialog.show();
     }
+
+
 
 }
