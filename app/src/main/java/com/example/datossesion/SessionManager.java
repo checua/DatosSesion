@@ -42,17 +42,8 @@ public class SessionManager {
             Intent intent = new Intent(_context, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            _context.startActivity(intent);
-            /*
-        }else {
-            Intent intent = new Intent(_context, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            _context.startActivity(intent);
-       */
+            //_context.startActivity(intent);
         }
-
-
     }
 
     public boolean isLogged() {
@@ -62,12 +53,12 @@ public class SessionManager {
     public void logOut(){
         editor.clear();
         editor.commit();
-        /*
-        Intent intent = new Intent(_context, LoginActivity.class);
+
+        Intent intent = new Intent(_context, CloseActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         _context.startActivity(intent);
 
-         */
+
     }
 }

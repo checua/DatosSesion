@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText txtUser, txtPwd;
-    Button btnLogin;
+    private EditText txtUser, txtPwd;
+    private Button btnLogin;
     SessionManager session;
     DialogManager cuadroDialogo = new DialogManager();
 
@@ -22,40 +22,56 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         session = new SessionManager(getApplicationContext());
-/*
-        if(!session.loginStatus()){
 
+        txtUser = findViewById(R.id.txtUserName);
+        txtPwd =  findViewById(R.id.txtPassword);
+        btnLogin = findViewById ( R.id.btnLogin );
+
+        if(session.isLogged()){
+            txtUser.setVisibility ( View.INVISIBLE );
+            txtPwd.setVisibility ( View.INVISIBLE );
+            btnLogin.setVisibility ( View.INVISIBLE );
         }
+    }
 
- */
-        session.loginStatus();
+    @Override
+    protected void onStart() {
+        super.onStart ( );
 
-        txtUser = (EditText) findViewById(R.id.txtUserName);
-        txtPwd =  (EditText) findViewById(R.id.txtPassword);
+        if(!session.isLogged()){
 
-        Toast.makeText(getApplicationContext(), "Estado de identificación: " + session.isLogged(), Toast.LENGTH_LONG).show();
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+            session.loginStatus();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = txtUser.getText().toString();
-                String password = txtPwd.getText().toString();
 
-                if(username.trim().length() > 0 && password.trim().length() > 0){
-                    if(username.equals("David") && password.equals("pixelpro")){
-                        session.createLoginSession("Pixelpro", "info@pixelpro.es");
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        finish();
+            //Toast.makeText(getApplicationContext(), "Estado de identificación: " + session.isLogged(), Toast.LENGTH_LONG).show();
+            btnLogin = (Button) findViewById(R.id.btnLogin);
+
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String username = txtUser.getText().toString();
+                    String password = txtPwd.getText().toString();
+
+                    if(username.trim().length() > 0 && password.trim().length() > 0){
+                        if(username.equals("David") && password.equals("pixelpro")){
+                            session.createLoginSession("Pixelpro", "info@pixelpro.es");
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            cuadroDialogo.showAlertDialog(LoginActivity.this, "Fallo", "David", false);
+                        }
                     }else{
-                        cuadroDialogo.showAlertDialog(LoginActivity.this, "Fallo", "David", false);
+                        cuadroDialogo.showAlertDialog(LoginActivity.this, "Fallo", "Debe introducir datos", false);
                     }
-                }else{
-                    cuadroDialogo.showAlertDialog(LoginActivity.this, "Fallo", "Debe introducir datos", false);
                 }
-            }
-        });
+            });
+
+        }else
+        {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
     }
 }
