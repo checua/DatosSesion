@@ -9,12 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText txtUser, txtPwd;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
     SessionManager session;
     DialogManager cuadroDialogo = new DialogManager();
+
+    Connection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         txtUser = findViewById(R.id.txtUserName);
         txtPwd =  findViewById(R.id.txtPassword);
         btnLogin = findViewById ( R.id.btnLogin );
+        btnRegister = findViewById ( R.id.btnRegister );
 
         if(session.isLogged()){
             txtUser.setVisibility ( View.INVISIBLE );
@@ -72,6 +77,14 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
+
+        btnRegister.setOnClickListener ( new View.OnClickListener ( ) {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        } );
 
     }
 }
