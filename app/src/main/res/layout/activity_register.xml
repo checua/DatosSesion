@@ -66,4 +66,11 @@
         android:layout_marginTop="15dp"
         android:text="Resultado" />
 
+    <ProgressBar
+        android:id="@+id/pbbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="invisible" />
+
 </LinearLayout>

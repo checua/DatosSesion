@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.ksoap2.SoapEnvelope;
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etConfirCorreo;
     private EditText etContra;
     private Button btnReg;
+    SessionManager session;
 
     private TextView txtResultado;
 
@@ -37,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
     public String strCorreo;
     public String strConfirCorreo;
     public String strContra;
+
+    ProgressBar progressBar;
 
 
     @Override
@@ -52,7 +56,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnReg = (Button)findViewById(R.id.btnReg);
         txtResultado = (TextView)findViewById(R.id.tvResult);
 
+        session = new SessionManager(getApplicationContext());
 
+        progressBar = findViewById(R.id.pbbar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         btnReg.setOnClickListener(new View.OnClickListener () {
 
@@ -66,6 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
                     strConfirCorreo = etConfirCorreo.getText().toString();
                     strContra = etContra.getText().toString();
 
+                    progressBar.setVisibility(View.VISIBLE);
+
                     if(strCorreo.equals(strConfirCorreo)){
                         txtResultado.setText("");
                         btnReg.setEnabled(false);
@@ -74,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                     else
                     {
+                        progressBar.setVisibility(View.INVISIBLE);
                         txtResultado.setText("Los correos no coinciden");
                     }
 
@@ -81,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    progressBar.setVisibility(View.INVISIBLE);
                     txtResultado.setText("Faltan datos, no se pudo registrar!");
                 }
             }
@@ -164,6 +175,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String part2 = parts[1]; // Nombres
                 String part3 = parts[2]; // Teléfono
                 */
+
+                session.createLoginSession(etCorreo.getText().toString(), etContra.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
 
                 Intent intentReg = new Intent(RegisterActivity.this, MainActivity.class);
                 /*intentReg.putExtra("idasesor", parts[0]);
