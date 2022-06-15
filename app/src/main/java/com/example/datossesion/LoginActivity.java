@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             txtUser.setVisibility ( View.INVISIBLE );
             txtPwd.setVisibility ( View.INVISIBLE );
             btnLogin.setVisibility ( View.INVISIBLE );
+            btnRegister.setVisibility ( View.INVISIBLE );
         }
     }
 
