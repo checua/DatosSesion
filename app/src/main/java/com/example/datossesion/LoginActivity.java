@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnRegister;
     SessionManager session;
     DialogManager cuadroDialogo = new DialogManager();
+    ProgressBar progressBar;
 
     Connection conn;
 
@@ -31,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         txtPwd =  findViewById(R.id.txtPassword);
         btnLogin = findViewById ( R.id.btnLogin );
         btnRegister = findViewById ( R.id.btnRegister );
+
+        progressBar = findViewById(R.id.pbbar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         if(session.isLogged()){
             txtUser.setVisibility ( View.INVISIBLE );
@@ -61,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(username.trim().length() > 0 && password.trim().length() > 0){
                         if(username.equals("David") && password.equals("pixelpro")){
                             session.createLoginSession("Pixelpro", "info@pixelpro.es");
+
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             finish();

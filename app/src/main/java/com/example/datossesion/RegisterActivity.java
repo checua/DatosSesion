@@ -156,16 +156,16 @@ public class RegisterActivity extends AppCompatActivity {
             if (result) {
 
                 //initialize it with a name to your pref-file and it's mode, public/private
-                SharedPreferences sharedpreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                //SharedPreferences sharedpreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
                 //get and initialise an instance of SharedPreferences's Editor
-                SharedPreferences.Editor editor = sharedpreferences.edit();
+                //SharedPreferences.Editor editor = sharedpreferences.edit();
 
                 //put desired string to the editor with a key to reference.
-                editor.putString("user1", etCorreo.getText().toString());
-                editor.putString("user2", etContra.getText().toString());
+                //editor.putString("user1", etCorreo.getText().toString());
+                //editor.putString("user2", etContra.getText().toString());
                 //apply your changes
-                editor.apply();
+                //editor.apply();
 
                 txtResultado.setText("Insertado OK");
 
@@ -181,12 +181,12 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-                Intent intentReg = new Intent(RegisterActivity.this, MainActivity.class);
+                //Intent intentReg = new Intent(RegisterActivity.this, MainActivity.class);
                 /*intentReg.putExtra("idasesor", parts[0]);
                 intentReg.putExtra("nombres", parts[1]);
                 intentReg.putExtra("tel_asesor", parts[2]);
                  */
-                RegisterActivity.this.startActivity(intentReg);
+                //RegisterActivity.this.startActivity(intentReg);
 
             }
             else
