@@ -179,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity {
                 session.createLoginSession(etCorreo.getText().toString(), etContra.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
 
                 //Intent intentReg = new Intent(RegisterActivity.this, MainActivity.class);
                 /*intentReg.putExtra("idasesor", parts[0]);

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionManager(getApplicationContext());
         lblName = (TextView) findViewById(R.id.lblName);
-        lblEmail = (TextView) findViewById(R.id.lblEmail);
+        //lblEmail = (TextView) findViewById(R.id.lblEmail);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
         Toast.makeText(getApplicationContext(), "Estado del login " + session.isLogged(), Toast.LENGTH_LONG );
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         String name = user.get(SessionManager.KEY_NAME);
         String email = user.get(SessionManager.KEY_EMAIL);
 
-        lblName.setText(Html.fromHtml("Nombre: <b>" + name + "</b>"));
-        lblEmail.setText(Html.fromHtml("Email: <b>" + email + "</b>"));
+        lblName.setText(Html.fromHtml("Correo: <b>" + name + "</b>"));
+        //lblEmail.setText(Html.fromHtml("contraseña: <b>" + email + "</b>"));
 
         btnLogout.setOnClickListener((arg0)  -> {
             session.logOut();
