@@ -35,12 +35,6 @@
         android:layout_height="wrap_content"
         android:text="Registrar" />
 
-    <ProgressBar
-        android:id="@+id/pbbar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="invisible" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -48,5 +42,12 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:visibility="invisible"/>
+
+    <ProgressBar
+        android:id="@+id/pbbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="invisible"/>
 
 </LinearLayout>

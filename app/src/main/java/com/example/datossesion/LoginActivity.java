@@ -152,8 +152,12 @@ public class LoginActivity extends AppCompatActivity {
             return resul;
         }
 
-        protected void onProgressUpdate(Integer... progress) {
-            //setProgressPercent(progress[0]);
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            if (progressBar != null) {
+                progressBar.setProgress(values[0]);
+            }
         }
 
         protected void onPostExecute(Integer result) {

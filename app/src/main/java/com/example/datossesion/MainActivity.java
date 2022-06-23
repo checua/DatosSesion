@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId ()){
+            case R.id.home:
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.ajustes:
                 Toast.makeText ( getApplicationContext (), "Has pulsado Ajustes", Toast.LENGTH_LONG ).show ();
                 return true;
@@ -74,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.extra:
                 Toast.makeText ( getApplicationContext (), "Has pulsado Extra", Toast.LENGTH_LONG ).show ();
+                return true;
+            case R.id.cerrarsesion:
+                session.logOut();
                 return true;
             default:
                 return super.onOptionsItemSelected ( item );
