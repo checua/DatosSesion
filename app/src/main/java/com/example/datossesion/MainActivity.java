@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         String name = user.get(SessionManager.KEY_NAME);
         String email = user.get(SessionManager.KEY_EMAIL);
 
-        lblName.setText(Html.fromHtml("Correo: <b>" + name + "</b>"));
+        lblName.setText(Html.fromHtml(name ));
+        //lblName.setText(Html.fromHtml("Correo: <b>" + name + "</b>"));
         //lblEmail.setText(Html.fromHtml("contraseña: <b>" + email + "</b>"));
 
         btnLogout.setOnClickListener((arg0)  -> {

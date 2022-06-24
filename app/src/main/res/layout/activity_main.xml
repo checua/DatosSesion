@@ -7,21 +7,27 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/lblName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
+        android:text="TextView"
+        android:textAlignment="textEnd" />
+    <!-- -->
     <TextView
         android:id="@+id/lblEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout" />
+        android:text="Logout"
+        android:visibility="invisible"/>
+
 </LinearLayout>

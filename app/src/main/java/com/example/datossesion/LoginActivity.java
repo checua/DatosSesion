@@ -32,12 +32,15 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     //private TextView tvResult;
 
+
     Connection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         session = new SessionManager(getApplicationContext());
 
