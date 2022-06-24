@@ -93,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
 
                          */
 
+                        progressBar.setVisibility(View.VISIBLE);
+
                         TareaWSConsulta tarea = new TareaWSConsulta();
                         tarea.execute();
                     }else{
@@ -120,6 +122,8 @@ public class LoginActivity extends AppCompatActivity {
     private class TareaWSConsulta extends AsyncTask<String, Integer, Integer> {
 
         protected Integer doInBackground(String... params) {
+
+
 
             int resul = 0;
             final String NAMESPACE = "http://microsoft.com/webservices/";
@@ -155,10 +159,16 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
+
+
+
             if (progressBar != null) {
                 progressBar.setProgress(values[0]);
+                progressBar.setMax(100); // 100 maximum value for the progress value
+                progressBar.setProgress(50); // 50 default progress value for the progress bar
             }
         }
+
 
         protected void onPostExecute(Integer result) {
 
@@ -178,6 +188,7 @@ public class LoginActivity extends AppCompatActivity {
 
                  */
                 cuadroDialogo.showAlertDialog(LoginActivity.this, "Fallo", "Correo o contraseña incorrecta", false);
+                progressBar.setVisibility(View.INVISIBLE);
                 txtUser.setText ( "" );
                 txtPwd.setText ( "" );
             }
