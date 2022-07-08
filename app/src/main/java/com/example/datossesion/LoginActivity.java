@@ -2,6 +2,7 @@ package com.example.datossesion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -122,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class TareaWSConsulta extends AsyncTask<String, Integer, Integer> {
 
         protected Integer doInBackground(String... params) {
@@ -162,7 +164,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-
 
 
             if (progressBar != null) {
