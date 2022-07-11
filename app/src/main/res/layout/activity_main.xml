@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
 
-
     <TextView
         android:id="@+id/lblName"
         android:layout_width="match_parent"
@@ -16,6 +15,46 @@
         android:text="TextView"
         android:textAlignment="textEnd" />
     <!-- -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <Button
+            android:id="@+id/btnGirar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="gira"
+            android:text="@string/btnGirar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/ruletaImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/tv_imagen"
+            android:onClick="gira"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/random" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="104dp"
+            android:layout_height="111dp"
+            android:contentDescription="TODO"
+            android:onClick="gira"
+            app:layout_constraintBottom_toBottomOf="@+id/btnGirar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/finger" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/lblEmail"
         android:layout_width="match_parent"
@@ -29,30 +68,5 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:visibility="invisible"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <ImageView
-            android:id="@+id/ruletaImagen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/tv_imagen"
-            app:srcCompat="@drawable/random" />
-
-        <Button
-            android:id="@+id/btnGirar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="gira"
-            android:text="@string/btnGirar" />
-
-
-    </LinearLayout>
 
 </LinearLayout>
