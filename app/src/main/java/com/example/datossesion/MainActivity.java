@@ -6,7 +6,11 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +30,21 @@ public class MainActivity extends AppCompatActivity {
     TextView lblEmail;
     ProgressBar progressBar;
 
+    ImageView ruleta;
+    Button girar;
+    Random random = new Random (  );
+    boolean reestablecer;
+    int angulo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
+
+        ruleta = (ImageView) findViewById ( R.id.ruletaImagen );
+        girar = (Button) findViewById ( R.id.btnGirar );
+
 
         session = new SessionManager(getApplicationContext());
         lblName = (TextView) findViewById(R.id.lblName);
@@ -85,40 +100,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-/*
-    @Override
-    protected void onStart() {
-        super.onStart ( );
 
-        SharedPreferences sharedpreferences = getSharedPreferences ( "MisPreferencias", Context.MODE_PRIVATE );
-        //get your string with default string in case referred key is not found
-        String str1 = sharedpreferences.getString ( "user1", null );
-        String str2 = sharedpreferences.getString ( "user2", null );
+    public void gira(View view){
+        if(reestablecer) {
+            angulo = angulo % 360;
+            RotateAnimation rotar = new RotateAnimation ( angulo, 360,
+                    RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                    RotateAnimation.RELATIVE_TO_SELF, 0.5f );
+            rotar.setFillAfter ( true );
+            rotar.setDuration ( 360 * 4 );
+            rotar.setInterpolator ( new AccelerateDecelerateInterpolator ( ) );
+        }else{
+            angulo = random.nextInt (3600) + 360;
+            RotateAnimation rotar = new RotateAnimation ( 0, angulo,
+                    RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                    RotateAnimation.RELATIVE_TO_SELF, 0.5f );
+            rotar.setFillAfter ( true );
+            rotar.setDuration ( 3600 );
+            rotar.setInterpolator ( new AccelerateDecelerateInterpolator ( ) );
+            ruleta.startAnimation ( rotar );
 
-        if (str1 != null && str2 != null) {
-            etUsuario.setVisibility ( View.INVISIBLE );
-            etContra.setVisibility ( View.INVISIBLE );
-            btnLogin.setVisibility ( View.INVISIBLE );
-            tvRegistrar.setVisibility ( View.INVISIBLE );
-            imagen1.setVisibility ( View.INVISIBLE );
-            progressBar.setVisibility ( View.VISIBLE );
-
-            Intent intentReg = new Intent ( MainActivity.this, Main2Activity.class );
-            MainActivity.this.startActivity ( intentReg );
-        } else {
-            progressBar.setVisibility ( View.INVISIBLE );
+            }
 
 
-            //Toast.makeText(getApplicationContext(),"Now onStart() calls", Toast.LENGTH_LONG).show(); //onStart Called
-            tvRegistrar.setOnClickListener ( new View.OnClickListener ( ) {
-                @Override
-                public void onClick(View view) {
-                    Intent intentReg = new Intent ( MainActivity.this, Register.class );
-                    MainActivity.this.startActivity ( intentReg );
-                }
-            } );
-        }
     }
 
- */
 }

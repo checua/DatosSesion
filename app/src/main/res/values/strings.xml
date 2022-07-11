@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Pray4ME</string>
-    <string name="imgRdm">random</string>
+    <string name="btnGirar">Girar</string>
+    <string name="tv_imagen">Información</string>
 </resources>
