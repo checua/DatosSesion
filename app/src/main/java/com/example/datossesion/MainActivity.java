@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     public void gira(View view){
         if(reestablecer) {
             angulo = angulo % 360;
