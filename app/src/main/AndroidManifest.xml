@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DatosSesion">
-        <activity android:name=".DonateActivity" />
+        <activity android:name=".DonateActivity"></activity>
         <activity android:name=".LocationActivity" />
         <activity android:name=".AjustesActivity" />
         <activity android:name=".RegisterActivity" />
@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-
     </application>
+
+
 
 </manifest>

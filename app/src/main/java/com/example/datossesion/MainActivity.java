@@ -119,14 +119,15 @@ public class MainActivity extends AppCompatActivity {
             rotar.setDuration ( 3600 );
             rotar.setInterpolator ( new AccelerateDecelerateInterpolator ( ) );
             ruleta.startAnimation ( rotar );
-            }
+        }
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
                 //buttons[inew][jnew].setBackgroundColor(Color.BLACK);
-                Intent intentReg = new Intent ( MainActivity.this, LocationActivity.class );
-                MainActivity.this.startActivity ( intentReg );
+                Intent intent = new Intent(getApplicationContext(), DonateActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             }
         }, 3600);
 
