@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void gira(View view){
+
         if(reestablecer) {
             angulo = angulo % 360;
             RotateAnimation rotar = new RotateAnimation ( angulo, 360,

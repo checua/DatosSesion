@@ -38,13 +38,15 @@
             android:contentDescription="@string/tv_imagen"
             android:onClick="gira"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/random" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="104dp"
-            android:layout_height="111dp"
+            android:layout_width="46dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="TODO"
             android:onClick="gira"
             app:layout_constraintBottom_toBottomOf="@+id/btnGirar"
